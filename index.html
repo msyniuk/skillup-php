@@ -3,9 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .test{
+            color: black;
+        }
+        .expand {
+            display: none;
+        }
+        .active .slide {
+            display: none;
+        }
+        .active .expand {
+            display: inline;
+        }
+        .www{
+            color:black;
+        }
+    </style>
 </head>
 <body>
-Hello, world!
-I'm the 1st lesson.
+<input type="number" id="op1" placeholder="Operand 1" value="0">
+<input type="number" id="op2" placeholder="Operand 2" value="0">
+<button id="plus">+</button>
+<button id="minus">-</button>
+<button id="multiply">*</button>
+<button id="divide">/</button>
+<span id="result">0</span>
+
+<div style="height: 300px">
+    <div id="panel" style="height: 300px; background-color: green"></div>
+</div>
+<h2 class="test"><i>Заголовок h2</i></h2>
+<h3>Заголовок h3</h3>
+<p>Абзац Форзац</p>
+<p>Абзац БлаБла</p>
+<p>Абзац Капец</p>
+<h2>За<i>го</i>ло<i>вок</i> h<i>2</i></h2>
+<h3 class="test">Заголовок h3</h3>
+<h2><i>Заголовок h2</i></h2>
+<button id="slide">
+    <span class="slide">Свернуть</span>
+    <span class="expand">Развернуть</span>
+</button>
+
+<button id="hide">
+    <span class="slide">Растворить</span>
+    <span class="expand">Показать</span>
+</button>
+<button id="changeh2">
+    <span class="slide">Text "!"</span>
+    <span class="expand">Text "Заголовок h2"</span>
+</button>
+<button id="changeh3">
+    <span class="slide">H3 красный</span>
+    <span class="expand">Н3 исходный</span>
+</button>
+<button id="changeh2color">
+    <span class="slide">H2 blue and 30px</span>
+    <span class="expand">H2 black"</span>
+</button>
+<button id="testchange">
+    <span class="slide">Test Red</span>
+    <span class="expand">Test black"</span>
+</button>
+<button id="h2testchange">
+    <span class="slide">h2.test red</span>
+    <span class="expand">h2.test black"</span>
+</button>
+<button id="afterp">
+    <span class="slide">P after P red</span>
+    <span class="expand">P after P black"</span>
+</button>
+<button id="alliinh2">
+    <span class="slide">Все i в h2 red</span>
+    <span class="expand">Все i в h2 black"</span>
+</button>
+<button id="allivnutrih2">
+    <span class="slide">Все i в внутри h2 red</span>
+    <span class="expand">Все i в внутри h2 black"</span>
+</button>
+
+<a id="load" href="content.html" target="#panel">Загрузить</a>
+<p>А тут тоже абзац</p>
+<button id="allheaders">
+    <span class="slide">Все заголовки red</span>
+    <span class="expand">Все заголовки black"</span>
+</button>
+<button id="noth2test">
+    <span class="slide">h2 не с test red</span>
+    <span class="expand">h2 не с test black"</span>
+</button>
+<button id="allnottest">
+    <span class="slide">Все не test red</span>
+    <span class="expand">Все не test black"</span>
+</button>
+<button id="afterheader">
+    <span class="slide">After header red</span>
+    <span class="expand">After header black"</span>
+</button>
+<button id="pfirst">
+    <span class="slide">Первый абзац red</span>
+    <span class="expand">Первый абзац black"</span>
+</button>
+<button id="plast">
+    <span class="slide">Последний абзац red</span>
+    <span class="expand">Последний абзац black"</span>
+</button>
+<button id="h2withi">
+    <span class="slide">H2 c тегом i red</span>
+    <span class="expand">H2 c тегом i black"</span>
+</button>
+<button id="h2contenti">
+    <span class="slide">H2 содержит i red</span>
+    <span class="expand">H2 содержит i black"</span>
+</button>
+<ul>
+    <li>Пункт1</li>
+    <li class="www">Пункт2www</li>
+    <li>Пункт3</li>
+    <li>Пункт4</li>
+    <li class="www">Пункт5www</li>
+    <li>Пункт6</li>
+    <li>Пункт7</li>
+    <li>Пункт8</li>
+    <li class="www">Пункт9www</li>
+    <li>Пункт10</li>
+    <li>Пункт11</li>
+</ul>
+<button id="li3">
+    <span class="slide">li 3 red</span>
+    <span class="expand">li 3 black"</span>
+</button>
+<button id="li10">
+    <span class="slide">li &lt10 red</span>
+    <span class="expand">li &lt10 black"</span>
+</button>
+<button id="liwww">
+    <span class="slide">li after www red</span>
+    <span class="expand">li after www black"</span>
+</button>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>
