@@ -22,7 +22,7 @@
 <?php foreach ($errors as $error) {?>
     <p class="error"><?= $error ?></p>
 <?php }?>
-
+<div>
 <form action="index.php" method="POST">
     <label>Name <input name="first_name" value="<?= $user['first_name'] ?>"></label>
     <label>Surname <input name="last_name" value="<?= $user['last_name'] ?>"></label>
@@ -31,5 +31,9 @@
     <label><input type="checkbox" name="confirm" <?= $user['confirm'] ? 'checked' : '' ?>>I agree</label>
     <button type="submit">Register</button>
 </form>
+</div>
+<div>
+    <a href="formsubscribe.php">Форма подписки</a>
+</div>
 </body>
 </html>

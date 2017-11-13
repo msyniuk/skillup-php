@@ -1,6 +1,7 @@
 <?php
 
-define('USERS_FILE', __DIR__ . '/user.txt');
+define('USERS_FILE', __DIR__ . '/users.txt');
+define('SUBSCRIBERS_FILE', __DIR__ . '/subscribers.txt');
 
 function processRequest($user) {
     foreach ($user as $field => $value) {
@@ -28,6 +29,15 @@ function validateUser(array $user) {
     return $errors;
 }
 
+function validateSubscriber(array $subscriber) {
+    $errors = [];
+
+    if (!$subscriber['email']) {
+        $errors[] = 'Введите email!';
+    }
+    return $errors;
+}
+
 function saveUser(array $user){
     if (file_exists(USERS_FILE)){
         $existing_users = file_get_contents(USERS_FILE);
@@ -48,6 +58,16 @@ function saveUser2(array $user){
 
     $user_info = implode("\t", $user) . PHP_EOL;
     fputs($file, $user_info);
+
+    fclose($file);
+
+}
+
+function saveSubscriber(array $subscriber){
+    $file = fopen(SUBSCRIBERS_FILE, 'a');
+
+    $subscriber_info = implode("\t", $subscriber) . PHP_EOL;
+    fputs($file, $subscriber_info);
 
     fclose($file);
 
