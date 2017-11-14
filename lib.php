@@ -1,6 +1,6 @@
 <?php
 
-define('USERS_FILE', __DIR__ . '/user.txt');
+define('USERS_FILE', __DIR__ . '/users.txt');
 
 function processRequest($user) {
     foreach ($user as $field => $value) {
