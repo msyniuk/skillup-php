@@ -16,6 +16,9 @@
         .error {
             color: red;
         }
+        th {
+
+        }
     </style>
 </head>
 <body>
@@ -35,5 +38,10 @@
 <div>
     <a href="formsubscribe.php">Форма подписки</a>
 </div>
+<p>
+<?php
+echo(drawTable(USERS_FILE));
+?>
+</p>
 </body>
 </html>

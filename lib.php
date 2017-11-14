@@ -72,3 +72,31 @@ function saveSubscriber(array $subscriber){
     fclose($file);
 
 }
+
+//Функция вывода таблицы пользователей
+function drawTable($file)
+{
+    if (file_exists(USERS_FILE)){
+        $arr = file($file);
+        $str = '<h3>Список пользователей</h3>';
+        $str .= "<table border='1' width=\"200\"><tr><th>Имя</th><th>Фамилия</th><th>Email</th>
+                <th>Телефон</th><th>Согласие</th></tr>";
+        foreach ($arr as $value){
+            $stroka = explode("\t", $value);
+            $str .= "<tr><td>" . $stroka[0] . "</td>" .
+                        "<td>" . $stroka[1] . "</td>" .
+                        "<td>" . $stroka[2] . "</td>" .
+                        "<td>" . $stroka[3] . "</td>" .
+                        "<td>" . $stroka[4] . "</td>" .
+                    "</tr>";
+        }
+        $str .= "</table>";
+
+    } else {
+        $str = 'Файл ' . USERS_FILE . ' не найден.';
+
+    }
+    return $str;
+
+}
+?>
