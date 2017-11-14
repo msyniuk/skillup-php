@@ -1,6 +1,6 @@
 <?php
 /**
- * @var array $user
+ * @var User $user
  * @var array $errors
  */
 ?>
@@ -27,11 +27,11 @@
 <?php }?>
 <div>
 <form action="index.php" method="POST">
-    <label>Name <input name="first_name" value="<?= $user['first_name'] ?>"></label>
-    <label>Surname <input name="last_name" value="<?= $user['last_name'] ?>"></label>
-    <label>Email <input type="email" name="email" value="<?= $user['email'] ?>"></label>
-    <label>Phone <input name="phone" value="<?= $user['phone'] ?>"></label>
-    <label><input type="checkbox" name="confirm" <?= $user['confirm'] ? 'checked' : '' ?>>I agree</label>
+    <label>Name <input name="firstName" value="<?= $user->firstName ?>"></label>
+    <label>Surname <input name="lastName" value="<?= $user->lastName ?>"></label>
+    <label>Email <input type="email" name="email" value="<?= $user->email ?>"></label>
+    <label>Phone <input name="phone" value="<?= $user->phone ?>"></label>
+    <label><input type="checkbox" name="confirm" <?= $user->confirm ? 'checked' : '' ?>>I agree</label>
     <button type="submit">Register</button>
 </form>
 </div>

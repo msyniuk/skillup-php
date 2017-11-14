@@ -3,32 +3,6 @@
 define('USERS_FILE', __DIR__ . '/users.txt');
 define('SUBSCRIBERS_FILE', __DIR__ . '/subscribers.txt');
 
-function processRequest($user) {
-    foreach ($user as $field => $value) {
-        //$user[$field] = $_POST[$field];
-        $user[$field] = isset($_POST[$field]) ? $_POST[$field] : '';
-    }
-
-    return $user;
-}
-
-function validateUser(array $user) {
-    $errors = [];
-
-    if (!$user['confirm']) {
-        $errors[] = 'Вы должны согласиться!';
-    }
-
-    if (!$user['email']) {
-        $errors[] = 'Введите email!';
-    }
-
-    if ($user['phone'] && !is_numeric($user['phone'])) {
-        $errors[] = 'В номере телефона допускаются только цифры!';
-    }
-    return $errors;
-}
-
 function validateSubscriber(array $subscriber) {
     $errors = [];
 
@@ -53,10 +27,10 @@ function saveUser(array $user){
 
 }
 
-function saveUser2(array $user){
+function saveUser2(User $user){
     $file = fopen(USERS_FILE, 'a');
 
-    $user_info = implode("\t", $user) . PHP_EOL;
+    $user_info = $user . PHP_EOL;
     fputs($file, $user_info);
 
     fclose($file);
