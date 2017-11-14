@@ -7,8 +7,18 @@ class User
     public $email = '';
     public $phone = '';
     public $confirm = false;
+    private $isProcessed = false;
+
+    public function __construct($firstName)
+    {
+        $this->firstName = $firstName;
+    }
 
     public function processRequest(array $postData){
+        if ($this->isProcessed){
+            throw new Exception('User was already processed.');
+        }
+        $this->isProcessed = true;
         $errors = $this->validate($postData);
         $this->firstName = isset($postData['firstName']) ? $postData['firstName'] : '';
         $this->lastName = isset($postData['lastName']) ? $postData['lastName'] : '';

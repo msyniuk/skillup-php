@@ -4,8 +4,11 @@ ini_set('display_errors', true);
 
 include 'lib.php';
 include 'User.php';
+include 'PremiumUser.php';
 
-$user = new User();
+//$user = new PremiumUser('Test');
+$user = new User('Test');
+//$user = new User();
 
 $errors = [];
 
