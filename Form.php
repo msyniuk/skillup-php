@@ -6,13 +6,14 @@
     protected function stringAtr($atr){
         $strAtr = '';
         foreach ($atr as $key=>$value){
-            $strAtr .= $key . '="' . $value . '" ';
+            $strAtr .= $key . '="' . htmlspecialchars($value) . '" ';
         }
 
         return $strAtr;
     }
 
     public function input(array $atr){
+        $atr = $this->prepareAtr($atr);
         $html = '<input ' . $this->stringAtr($atr). '>';
         return $html;
 
@@ -25,8 +26,13 @@
     }
 
     public function textarea(array $atr){
-        $value = $_POST['textbox'];
-        unset($atr['value']);
+        $atr = $this->prepareAtr($atr);
+        if (isset($atr['value'])) {
+            $value = $atr['value'];
+            unset($atr['value']);
+        } else {
+            $value ='';
+        }
         $html = '<textarea ' . $this->stringAtr($atr) . '>' . $value . '</textarea>';
         return $html;
     }
@@ -45,6 +51,10 @@
     public function close(){
         $html = '</form>';
         return $html;
+    }
+
+    protected function prepareAtr(array $atr){
+        return $atr;
     }
 
 

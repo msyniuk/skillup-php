@@ -133,15 +133,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 echo $form->open(['action'=>'index.php', 'method'=>'POST']);
 
-echo $form->input(['type'=>'text', 'value'=>$form->get('text'), 'name'=>'text']) . BR ;
+echo $form->input(['type'=>'text', 'value'=>'text', 'name'=>'text']) . BR ;
 
-echo $form->password(['value'=>$form->get('pass'), 'name'=>'pass']) . BR;
+echo $form->password(['value'=>'pass', 'name'=>'pass']) . BR;
 //Код выше выведет <input type="password" value="***">
 
 echo $form->submit(['value'=>'go']) . BR;
 //Код выше выведет <input type="submit" value="go">
 
-echo $form->textarea(['placeholder'=>'123', 'value'=>$form->get('Hello!'), 'name'=>'textbox']);
+echo $form->textarea(['placeholder'=>'123', 'value'=>'Hello!', 'name'=>'textbox']);
 //Код выше выведет <textarea placeholder="123">!!!</textarea>
 
 echo $form->close();
