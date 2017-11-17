@@ -1,17 +1,18 @@
 <?php
 
-class Worker2
+class User
 {
-    private $name;
-    private $age;
-    private $salary;
+    protected $name;
+    protected $age;
 
-    public function __construct($name, $age, $salary){
+    public function setName($name){
         $this->name = $name;
+    }
+
+    public function setAge($age){
         if ($this->checkAge($age)) {
             $this->age = $age;
         }
-        $this->salary = $salary;
     }
 
     public function getName(){
@@ -22,9 +23,6 @@ class Worker2
         return $this->age;
     }
 
-    public function getSalary(){
-        return $this->salary;
-    }
 
     private function checkAge($age){
         if ($age >= 1 && $age <= 100){
