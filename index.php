@@ -3,6 +3,8 @@ include 'Worker.php';
 include 'Worker1.php';
 include 'Worker2.php';
 include 'Worker3.php';
+include 'Student.php';
+include 'Driver.php';
 
 define('BR', '<br/>');
 
@@ -83,3 +85,19 @@ print('<h3>Задача 5 (наследование User, Worker, Student)</h3>'
 var_dump($worker1);
 var_dump($worker2);
 print('Сумма зарплат: ' . $sumSalary . BR);
+
+$student = new Student();
+
+$student->setName('Студент');
+$student->setAge(20);
+$student->setGrants(200);
+$student->setYearNumber(2);
+var_dump($student);
+
+print('<h3>Задача 6 (класс Driver)</h3>');
+
+$driver = new Driver('Витя', 60, 1000);
+
+$driver->setDrivePeriod(30);
+$driver->setCategory('E');
+var_dump($driver);

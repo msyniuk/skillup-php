@@ -1,6 +1,6 @@
 <?php
 
-class Worker2
+    class Worker2
 {
     private $name;
     private $age;

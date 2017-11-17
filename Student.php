@@ -1,17 +1,24 @@
 <?php
-include 'User.php';
 
-class Worker3 extends User
+class Student extends User
 {
-    private $salary;
+    private $grants;
+    private $yearNumber;
 
-    public function setSalary($salary){
-        $this->salary = $salary;
+    public function setGrants($grants){
+        $this->grants = $grants;
     }
 
-    public function getSalary(){
-        return $this->salary;
+    public function getGrants(){
+        return $this->grants;
     }
 
+    public function setYearNumber($yearNumber){
+        $this->yearNumber = $yearNumber;
+    }
+
+    public function getYearNumber(){
+        return $this->yearNumber;
+    }
 
 }
