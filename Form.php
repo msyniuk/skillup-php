@@ -12,28 +12,32 @@
         return $strAtr;
     }
 
-    public function input($atr){
+    public function input(array $atr){
         $html = '<input ' . $this->stringAtr($atr). '>';
         return $html;
 
     }
 
-    public function submit($atr){
-        $html = '<input type="submit" ' . $this->stringAtr($atr) .'>';
+    public function submit(array $atr){
+        $atr['type'] = "submit";
+        $html = '<input ' . $this->stringAtr($atr) .'>';
         return $html;
     }
 
-    public function textarea($atr){
-        $html = '<textarea ' . $this->stringAtr($atr) . '></textarea>';
+    public function textarea(array $atr){
+        $value = $_POST['textbox'];
+        unset($atr['value']);
+        $html = '<textarea ' . $this->stringAtr($atr) . '>' . $value . '</textarea>';
         return $html;
     }
 
-    public function password($atr){
-        $html = '<input type="password" ' . $this->stringAtr($atr) .'>';
+    public function password(array $atr){
+        $atr['type'] = "password";
+        $html = '<input ' . $this->stringAtr($atr) .'>';
         return $html;
     }
 
-    public function open($atr){
+    public function open(array $atr){
         $html = '<form ' . $this->stringAtr($atr) . '>';
         return $html;
     }

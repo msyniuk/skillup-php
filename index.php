@@ -6,6 +6,7 @@ include 'Worker3.php';
 include 'Student.php';
 include 'Driver.php';
 include 'Form.php';
+include 'SmartForm.php';
 
 define('BR', '<br/>');
 
@@ -123,4 +124,28 @@ echo $form->close();
 //Код выше выведет </form>
 
 print('<h3>Задача 8 (класс SmartForm)</h3>');
-//$form = new SmartForm();
+$form = new SmartForm();
+if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    foreach ($_POST as $key=>$value){
+        $form->set($key, $value);
+    }
+}
+
+echo $form->open(['action'=>'index.php', 'method'=>'POST']);
+
+echo $form->input(['type'=>'text', 'value'=>$form->get('text'), 'name'=>'text']) . BR ;
+
+echo $form->password(['value'=>$form->get('pass'), 'name'=>'pass']) . BR;
+//Код выше выведет <input type="password" value="***">
+
+echo $form->submit(['value'=>'go']) . BR;
+//Код выше выведет <input type="submit" value="go">
+
+echo $form->textarea(['placeholder'=>'123', 'value'=>$form->get('Hello!'), 'name'=>'textbox']);
+//Код выше выведет <textarea placeholder="123">!!!</textarea>
+
+echo $form->close();
+//Код выше выведет </form>
+
+
+
