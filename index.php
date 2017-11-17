@@ -5,6 +5,7 @@ include 'Worker2.php';
 include 'Worker3.php';
 include 'Student.php';
 include 'Driver.php';
+include 'Form.php';
 
 define('BR', '<br/>');
 
@@ -101,3 +102,22 @@ $driver = new Driver('Витя', 60, 1000);
 $driver->setDrivePeriod(30);
 $driver->setCategory('E');
 var_dump($driver);
+
+print('<h3>Задача 7 (класс Form)</h3>');
+$form = new Form();
+echo $form->open(['action'=>'index.php', 'method'=>'POST']);
+//Код выше выведет <form action="index.php" method="POST">
+
+echo $form->input(['type'=>'text', 'value'=>'hi']) . BR ;
+//Код выше выведет <input type="password" value="hi">
+echo $form->password(['value'=>'***']) . BR;
+//Код выше выведет <input type="password" value="***">
+
+echo $form->submit(['value'=>'go']) . BR;
+//Код выше выведет <input type="submit" value="go">
+
+echo $form->textarea(['placeholder'=>'123', 'value'=>'!!!']);
+//Код выше выведет <textarea placeholder="123">!!!</textarea>
+
+echo $form->close();
+//Код выше выведет </form>
