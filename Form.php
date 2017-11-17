@@ -3,7 +3,7 @@
     class Form
 {
 
-    private function stringAtr($atr){
+    protected function stringAtr($atr){
         $strAtr = '';
         foreach ($atr as $key=>$value){
             $strAtr .= $key . '="' . $value . '" ';

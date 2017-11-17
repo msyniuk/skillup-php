@@ -121,3 +121,6 @@ echo $form->textarea(['placeholder'=>'123', 'value'=>'!!!']);
 
 echo $form->close();
 //Код выше выведет </form>
+
+print('<h3>Задача 8 (класс SmartForm)</h3>');
+//$form = new SmartForm();

@@ -3,6 +3,4 @@
     class SmartForm extends Form
 {
 
-
-
 }
