@@ -1,10 +1,19 @@
 <?php
+define('BR', '<br/>');
+session_start();
 
-include 'init.php';
+if(!isset($_SESSION['count'])){
+    print 'Вы еще не обновляли эту страницу.';
+    $_SESSION['count'] = 0;
 
-setcookie('user', 'tester', time() - 3 * 3600);
+} else {
+    $_SESSION['count'] += 1;
+    print 'Вы обновили эту страницу ' . $_SESSION['count'] . ' раз.' . BR;
+}
 
 ?>
-<a href="readcookie.php">Узнать значение cookie</a>
-<br/>
-<a href="logout.php">Logout</a>
+<p>
+    <a href="regexp.php">Регулярные выражения (задачи)</a><br/>
+    <a href="session.php">Сессии (задача 3)</a>
+</p>
+
