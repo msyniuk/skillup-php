@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Ноя 24 2017 г., 21:20
+-- Время создания: Ноя 29 2017 г., 00:00
 -- Версия сервера: 5.7.20-0ubuntu0.16.04.1
 -- Версия PHP: 7.0.22-0ubuntu0.16.04.1
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- База данных: `skillup`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `departments`
+--
+
+CREATE TABLE `departments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `departments`
+--
+
+INSERT INTO `departments` (`id`, `name`) VALUES
+(1, 'Отдел продаж'),
+(2, 'Бухгалтерия'),
+(3, 'Администрация');
 
 -- --------------------------------------------------------
 
@@ -56,24 +76,31 @@ CREATE TABLE `workers` (
   `id` int(11) NOT NULL,
   `name` varchar(250) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
-  `salary` int(11) DEFAULT NULL
+  `salary` int(11) DEFAULT NULL,
+  `department_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `workers`
 --
 
-INSERT INTO `workers` (`id`, `name`, `age`, `salary`) VALUES
-(1, 'Дима', 23, 400),
-(2, 'Петя', 25, 500),
-(3, 'Вася', 23, 500),
-(4, 'Коля', 30, 1000),
-(5, 'Иван', 27, 500),
-(6, 'Кирилл', 28, 1000);
+INSERT INTO `workers` (`id`, `name`, `age`, `salary`, `department_id`) VALUES
+(1, 'Дима', 23, 400, 1),
+(2, 'Петя', 25, 500, 2),
+(3, 'Вася', 23, 500, 3),
+(4, 'Коля', 30, 1000, 3),
+(5, 'Иван', 27, 500, 1),
+(6, 'Кирилл', 28, 1000, 1);
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `departments`
+--
+ALTER TABLE `departments`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `users`
@@ -86,23 +113,40 @@ ALTER TABLE `users`
 -- Индексы таблицы `workers`
 --
 ALTER TABLE `workers`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `workers_departments_id_fk` (`department_id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
+-- AUTO_INCREMENT для таблицы `departments`
+--
+ALTER TABLE `departments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `workers`
 --
 ALTER TABLE `workers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `workers`
+--
+ALTER TABLE `workers`
+  ADD CONSTRAINT `workers_departments_id_fk` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
